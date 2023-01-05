@@ -5,12 +5,11 @@
 var findMinArrowShots = function(points) {
     points.sort((a, b) => a[0] - b[0]);
     
-    let cnt = 0;
-    let overlap;    
-    
+    let cnt = 1;
+    let overlap = points[0];
     
     points.forEach((p) => {
-        if(!overlap || overlap[1] < p[0] ){
+        if(overlap[1] < p[0]){
             cnt++;
             overlap = p;
         } else {
