@@ -19,8 +19,8 @@ var removeElement = function(nums, val) {
     }
     
     if(nums[start] === val) {
-        nums.splice(start);
+        return start;
     } else {
-        nums.splice(start + 1);
+        return start + 1;
     }
 };
