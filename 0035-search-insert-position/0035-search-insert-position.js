@@ -3,25 +3,22 @@
  * @param {number} target
  * @return {number}
  */
-var searchInsert = function(nums, target) {
-    if(target < nums[0]) return 0;
-    if(target > nums[nums.length - 1]) return nums.length;
+var searchInsert = function(nums, target) {  
+  let mid = Math.floor(nums.length / 2);
+  let start = 0;
+  let end = nums.length - 1;
+
+  while(start <= end){
+    if(nums[mid] === target) return mid;
     
-    let s = 0;
-    let l = nums.length - 1;
-    let m;
+    mid = Math.floor((end + start) / 2);
     
-    while(s <= l){
-        if(nums[m] === target) return m;
-        
-        m = Math.floor((s + l) / 2);
-        
-        if(target < nums[m]){
-            l = m - 1;
-        } else if(target > nums[m]){
-            s = m + 1;
-        } else return m;
+    if(nums[mid] < target){
+      start = mid + 1;
+    } else if(nums[mid] > target){
+      end = mid - 1;
     }
-    
-    return nums[m] < target ? m + 1 : m;
+  }
+  
+  return nums[mid] < target ? mid + 1 : mid;
 };
